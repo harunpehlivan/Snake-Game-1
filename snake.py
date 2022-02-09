@@ -130,7 +130,6 @@ def redrawWindow():
     s.draw(win)
     snack.draw(win)
     pygame.display.update()
-    pass
 
 
 
@@ -139,9 +138,9 @@ def drawGrid(w, rows, surface):
 
     x = 0
     y = 0
-    for l in range(rows):
-        x = x + sizeBtwn
-        y = y +sizeBtwn
+    for _ in range(rows):
+        x += sizeBtwn
+        y += sizeBtwn
 
         pygame.draw.line(surface, (255,255,255), (x, 0),(x,w))
         pygame.draw.line(surface, (255,255,255), (0, y),(w,y))
@@ -154,10 +153,10 @@ def randomSnack(rows, item):
     while True:
         x = random.randrange(1,rows-1)
         y = random.randrange(1,rows-1)
-        if len(list(filter(lambda z:z.pos == (x,y), positions))) > 0:
-               continue
+        if list(filter(lambda z: z.pos == (x, y), positions)):
+            continue
         else:
-               break
+            break
 
     return (x,y)
 
